@@ -29,7 +29,14 @@ result = {row.letter: row.code for (index, row) in data.iterrows()}
 print(result)
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("ENTER THE WORD!").upper()
-list_input = [result[item] for item in word]
-print(list_input)
+def generate():
+    word = input("ENTER THE WORD!").upper()
+    try:
+        list_input = [result[item] for item in word]
+    except KeyError:
+        print("Sorry try to type only letters")
+        generate()
+    else:
+        print(list_input)
+generate()
 
